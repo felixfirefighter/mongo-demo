@@ -1,0 +1,24 @@
+<body>
+
+<ul class="test">
+   <% for(var i=0; i<one.length; i++) {%>
+   <li class="test">
+      <!-- <span><%= one[i]._id %></span> -->
+       <span><%= one[i].name %></span>
+       <span><%= one[i].password %></span>
+      <!-- <span><a href="/edit/id=<%= one[i]._id%>">Edit</a></span> -->
+      <span><a href="/delete/<%= one[i]._id%>">delete</a></span>
+      <span><a href="/update/<%= one[i]._id%>">update</a></span>
+   </li>
+   <% } %>
+</ul>
+
+<form action="" method="POST">
+   <input type="text" placeholder="name" name="name">
+   <input type="text" placeholder="password" name="password">
+   <button type="submit">Submit</button>
+</form>
+
+<script src="main.js"></script>
+
+</body>
