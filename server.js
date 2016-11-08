@@ -14,7 +14,7 @@ app.set('view engine', 'ejs');
 var db;
 var one;
 
-mongodb.connect('mongodb://leeyoongti:leeyoongti@ds141937.mlab.com:41937/mongo-demo',function(err,database){
+mongodb.connect('mongodb://vincentlee:vincentlee@ds141937.mlab.com:41937/mongo-demo',function(err,database){
    if(err) return console.error(err);
    
    db = database;
@@ -60,4 +60,22 @@ app.get('/update/:id',function(req,res){
        
        res.render('edit.ejs',{one:result});
    }); 
+});
+
+app.post('/update',function(req,res){
+    console.log(req.body);
+   one.update(
+       {
+           '_id':ObjectId(req.body.id)
+       }
+       ,
+       {
+            '_id':ObjectId(req.body.id),
+            'name':req.body.name,
+            'password':req.body.password
+       },function(err,result){
+           if(err) console.error(err);
+           
+           res.redirect('/');
+       })
 });
